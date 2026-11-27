@@ -4,6 +4,13 @@
 {% block head %}
 <style>
   /* Spacious and Legible Line Item Inputs */
+  .invoice-generator-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 2.2fr) minmax(280px, 1fr);
+    align-items: start;
+    gap: var(--sp-6);
+  }
+
   #itemsTable {
     width: 100%;
     min-width: 720px;
@@ -50,6 +57,12 @@
   #itemsTable input[type=number] {
     -moz-appearance: textfield;
   }
+
+  @media (max-width: 900px) {
+    .invoice-generator-layout {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
 </style>
 {% endblock %}
 
@@ -69,7 +82,7 @@
   </div>
 </div>
 
-<div class="grid-2" style="grid-template-columns: 2.2fr 1fr; align-items: start; gap: var(--sp-6);">
+<div class="invoice-generator-layout">
   <!-- Left Column: Form & Line Items -->
   <div class="card glass">
     <form id="genForm" onsubmit="generateInvoice(event)">
